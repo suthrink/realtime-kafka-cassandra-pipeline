@@ -14,25 +14,25 @@ from cassandra import ConsistencyLevel
 cloud_config= {
   'secure_connect_bundle': 'secure-connect-cassandra-demo.zip'
 }
-auth_provider = PlainTextAuthProvider('hDobkoEYcMyhCKvfIFsCaQvZ', 'SFDu-QSXKGvBc.qPgsQIUWUmjc+yNf6Pr8i28pSj23MZFfWqsMYEAay1-N5YOgxKBFxmJNfodgDFvolvx3YUrO_-pyD1NHZ75cqr9GJU5.qSlx7yvivmMtD4DDY_05mD')
+auth_provider = PlainTextAuthProvider('your_auth_clientid', 'secretkey')
 cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
 session = cluster.connect()
 
 #Define Kafka configuration
 kafka_config = {
-    'bootstrap.servers': 'pkc-7prvp.centralindia.azure.confluent.cloud:9092',
+    'bootstrap.servers': 'your_kafka_servers',
     'sasl.mechanisms': 'PLAIN',
     'security.protocol': 'SASL_SSL',
-    'sasl.username': 'UJ4RFINKGGFQ33QQ',
-    'sasl.password': 'IdusWx2J/IxqVn3sVxyuKiF2LOpLFxII27vOPBqMDKU1v3bbtdFLE0bJAWL3lgug',
+    'sasl.username': 'your_username',
+    'sasl.password': ' your_password',
     'group.id': 'group16',
     'auto.offset.reset': 'earliest'
 }
 
 # Create a Schema Registry client
 schema_registry_client = SchemaRegistryClient({
-  'url': 'https://psrc-e8vk0.southeastasia.azure.confluent.cloud',
-  'basic.auth.user.info': '{}:{}'.format('IQKRQLD776AMVUKR', 'gDVxhV0CKkEgL3eIPBB2a63otXJg++N+Lf78OdyoTBQxGerTZF0YsGZep7RoBxxR')
+  'url': 'your_schema_url',
+  'basic.auth.user.info': '{}:{}'.format('your_schema_key', 'your_schema_secretkey')
 })
 
 
